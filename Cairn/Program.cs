@@ -12,7 +12,7 @@ namespace cairn
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            PeAnalysisService peAnalysisService = new(); 
+            PeAnalysisService peAnalysisService = new PeAnalysisService(); 
 
             Application.Run(new MainForm(peAnalysisService));
         }

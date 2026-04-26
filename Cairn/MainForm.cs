@@ -15,7 +15,7 @@ namespace cairn
 
         private void BrowseButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new()
+            OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 Filter = "Executables (*.exe;*.dll)|*.exe;*.dll|All files (*.*)|*.*"
             };
