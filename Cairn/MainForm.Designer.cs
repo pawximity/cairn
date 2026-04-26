@@ -50,7 +50,7 @@
             browseButton.TabIndex = 1;
             browseButton.Text = "Browse";
             browseButton.UseVisualStyleBackColor = true;
-            browseButton.Click += browseButton_Click;
+            browseButton.Click += BrowseButton_Click;
             // 
             // filePathTextbox
             // 

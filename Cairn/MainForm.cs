@@ -1,20 +1,38 @@
+using System.Windows.Forms.Design;
+
 namespace cairn
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+
+        private readonly PeAnalysisService _peAnalysisService;
+
+        public MainForm(PeAnalysisService peAnalysisService)
         {
             InitializeComponent();
+            _peAnalysisService = peAnalysisService;
         }
 
-        private void browseButton_Click(object sender, EventArgs e)
+        private void BrowseButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            DialogResult dialogResult = openFileDialog.ShowDialog();
-            if (dialogResult == DialogResult.OK) 
+            OpenFileDialog openFileDialog = new()
             {
-                filePathTextbox.Text = openFileDialog.FileName;
+                Filter = "Executables (*.exe;*.dll)|*.exe;*.dll|All files (*.*)|*.*"
+            };
+
+            DialogResult dialogResult = openFileDialog.ShowDialog();
+            if (dialogResult != DialogResult.OK)
+            {
+                return;
             }
+            string filePath = openFileDialog.FileName;
+            filePathTextbox.Text = filePath;
+            OpenPeFile(filePath);
+        }
+
+        private void OpenPeFile(string filePath)
+        {
+            _peAnalysisService.Analyze(filePath);
         }
     }
 }
