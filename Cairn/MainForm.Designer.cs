@@ -1,6 +1,6 @@
 ﻿namespace cairn
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            label1 = new Label();
+            browseButton = new Button();
+            filePathTextbox = new TextBox();
+            menuStrip1 = new MenuStrip();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(77, 377);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 15);
+            label1.TabIndex = 0;
+            // 
+            // browseButton
+            // 
+            browseButton.Location = new Point(559, 29);
+            browseButton.Name = "browseButton";
+            browseButton.Size = new Size(75, 23);
+            browseButton.TabIndex = 1;
+            browseButton.Text = "Browse";
+            browseButton.UseVisualStyleBackColor = true;
+            browseButton.Click += browseButton_Click;
+            // 
+            // filePathTextbox
+            // 
+            filePathTextbox.Location = new Point(162, 29);
+            filePathTextbox.Name = "filePathTextbox";
+            filePathTextbox.Size = new Size(391, 23);
+            filePathTextbox.TabIndex = 2;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.TabIndex = 3;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Text = "Form1";
+            Controls.Add(filePathTextbox);
+            Controls.Add(browseButton);
+            Controls.Add(label1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
+            Name = "MainForm";
+            Text = "cairn";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private Button browseButton;
+        private TextBox filePathTextbox;
+        private MenuStrip menuStrip1;
     }
 }

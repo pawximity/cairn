@@ -1,10 +1,20 @@
 namespace cairn
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void browseButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            DialogResult dialogResult = openFileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK) 
+            {
+                filePathTextbox.Text = openFileDialog.FileName;
+            }
         }
     }
 }
