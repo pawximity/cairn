@@ -11,18 +11,19 @@ namespace cairn.Services
             FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             PEReader peReader = new PEReader(fileStream);
             PEHeaders peHeaders = peReader.PEHeaders;
-            // fields from pe header
-            if (peHeaders.PEHeader != null)
+
+            if (peHeaders.PEHeader == null)
             {
-                PEHeader peHeader = peHeaders.PEHeader;
-                bool is64Bit = peHeader.Magic == PEMagic.PE32Plus;
-                // fields from sections
-                List<PeSectionResult> sectionResults = FindSectionResults(peHeaders.SectionHeaders);
-                PeAnalysisResult analysisResult = new(filePath, is64Bit, peHeader.AddressOfEntryPoint, peHeader.ImageBase, peHeader.SizeOfImage, sectionResults);
-                return analysisResult;
+                return null;
             }
 
-            return null;
+            // fields from pe header
+            PEHeader peHeader = peHeaders.PEHeader;
+            bool is64Bit = peHeader.Magic == PEMagic.PE32Plus;
+            // fields from sections
+            List<PeSectionResult> sectionResults = FindSectionResults(peHeaders.SectionHeaders);
+            PeAnalysisResult analysisResult = new(filePath, is64Bit, peHeader.AddressOfEntryPoint, peHeader.ImageBase, peHeader.SizeOfImage, sectionResults);
+            return analysisResult;
         }
 
         private static List<PeSectionResult> FindSectionResults(ImmutableArray<SectionHeader> sectionHeaders)

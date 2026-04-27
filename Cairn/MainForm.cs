@@ -1,3 +1,4 @@
+using cairn.Models;
 using cairn.Services;
 using System.Windows.Forms.Design;
 
@@ -33,7 +34,19 @@ namespace cairn
 
         private void OpenPeFile(string filePath)
         {
-            _peAnalysisService.Analyze(filePath);
+            PeAnalysisResult? analysisResult = _peAnalysisService.Analyze(filePath);
+            RenderPeAnalysisResult(analysisResult);
+        }
+
+        private void RenderPeAnalysisResult(PeAnalysisResult? peAnalysisResult)
+        {
+            if (peAnalysisResult == null)
+            {
+                return;
+            }
+            architectureValueLabel.Text = peAnalysisResult.Is64Bit ? "64 Bit" : "32 Bit";
+            entryPointValueLabel.Text = Convert.ToString(peAnalysisResult.AddressOfEntryPoint);
+            peDataGridView.DataSource = peAnalysisResult.SectionResults.ToList();
         }
     }
 }

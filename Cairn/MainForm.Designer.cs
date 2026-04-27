@@ -32,6 +32,12 @@
             browseButton = new Button();
             filePathTextbox = new TextBox();
             menuStrip1 = new MenuStrip();
+            peDataGridView = new DataGridView();
+            architectureLabel = new Label();
+            entryPointLabel = new Label();
+            entryPointValueLabel = new Label();
+            architectureValueLabel = new Label();
+            ((System.ComponentModel.ISupportInitialize)peDataGridView).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -67,11 +73,62 @@
             menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
+            // peDataGridView
+            // 
+            peDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            peDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            peDataGridView.Location = new Point(33, 105);
+            peDataGridView.Name = "peDataGridView";
+            peDataGridView.Size = new Size(726, 333);
+            peDataGridView.TabIndex = 4;
+            // 
+            // architectureLabel
+            // 
+            architectureLabel.AutoSize = true;
+            architectureLabel.Location = new Point(39, 73);
+            architectureLabel.Name = "architectureLabel";
+            architectureLabel.Size = new Size(75, 15);
+            architectureLabel.TabIndex = 5;
+            architectureLabel.Text = "Architecture:";
+            // 
+            // entryPointLabel
+            // 
+            entryPointLabel.AutoSize = true;
+            entryPointLabel.Location = new Point(162, 73);
+            entryPointLabel.Name = "entryPointLabel";
+            entryPointLabel.Size = new Size(113, 15);
+            entryPointLabel.TabIndex = 6;
+            entryPointLabel.Text = "Entry Point Address:";
+            // 
+            // entryPointValueLabel
+            // 
+            entryPointValueLabel.AutoSize = true;
+            entryPointValueLabel.Location = new Point(272, 73);
+            entryPointValueLabel.Name = "entryPointValueLabel";
+            entryPointValueLabel.Size = new Size(12, 15);
+            entryPointValueLabel.TabIndex = 7;
+            entryPointValueLabel.Text = "-";
+            // 
+            // architectureValueLabel
+            // 
+            architectureValueLabel.AutoSize = true;
+            architectureValueLabel.Location = new Point(111, 73);
+            architectureValueLabel.Name = "architectureValueLabel";
+            architectureValueLabel.Size = new Size(12, 15);
+            architectureValueLabel.TabIndex = 8;
+            architectureValueLabel.Text = "-";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(800, 450);
+            Controls.Add(architectureValueLabel);
+            Controls.Add(entryPointValueLabel);
+            Controls.Add(entryPointLabel);
+            Controls.Add(architectureLabel);
+            Controls.Add(peDataGridView);
             Controls.Add(filePathTextbox);
             Controls.Add(browseButton);
             Controls.Add(label1);
@@ -79,6 +136,7 @@
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
             Text = "cairn";
+            ((System.ComponentModel.ISupportInitialize)peDataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -89,5 +147,10 @@
         private Button browseButton;
         private TextBox filePathTextbox;
         private MenuStrip menuStrip1;
+        private DataGridView peDataGridView;
+        private Label architectureLabel;
+        private Label entryPointLabel;
+        private Label entryPointValueLabel;
+        private Label architectureValueLabel;
     }
 }
