@@ -11,6 +11,7 @@ namespace cairn.Services
             FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             PEReader peReader = new PEReader(fileStream);
             PEHeaders peHeaders = peReader.PEHeaders;
+            CoffHeader coffHeader = peHeaders.CoffHeader;
 
             if (peHeaders.PEHeader == null)
             {
@@ -22,7 +23,15 @@ namespace cairn.Services
             bool is64Bit = peHeader.Magic == PEMagic.PE32Plus;
             // fields from sections
             List<PeSectionResult> sectionResults = FindSectionResults(peHeaders.SectionHeaders);
-            PeAnalysisResult analysisResult = new(filePath, is64Bit, peHeader.AddressOfEntryPoint, peHeader.ImageBase, peHeader.SizeOfImage, sectionResults);
+            PeAnalysisResult analysisResult = new(
+                filePath,
+                is64Bit,
+                peHeader.AddressOfEntryPoint,
+                coffHeader.Machine.ToString(),
+                peHeader.ImageBase,
+                peHeader.SizeOfImage,
+                sectionResults
+                );
             return analysisResult;
         }
 
@@ -31,7 +40,14 @@ namespace cairn.Services
             List<PeSectionResult> sectionResults = new List<PeSectionResult>();
             foreach (SectionHeader sectionHeader in sectionHeaders)
             {
-                PeSectionResult sectionResult = new(sectionHeader.Name, sectionHeader.VirtualAddress, sectionHeader.VirtualAddress, sectionHeader.SizeOfRawData);
+                PeSectionResult sectionResult = new(
+                    sectionHeader.Name,
+                    sectionHeader.VirtualAddress,
+                    sectionHeader.VirtualAddress,
+                    sectionHeader.SizeOfRawData,
+                    sectionHeader.PointerToRawData,
+                    sectionHeader.SectionCharacteristics.ToString()
+                    );
                 sectionResults.Add(sectionResult);
             }
             return sectionResults;

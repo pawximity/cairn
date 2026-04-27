@@ -45,7 +45,9 @@ namespace cairn
                 return;
             }
             architectureValueLabel.Text = peAnalysisResult.Is64Bit ? "64 Bit" : "32 Bit";
+            machineValueLabel.Text = peAnalysisResult.Machine;
             entryPointValueLabel.Text = Convert.ToString(peAnalysisResult.AddressOfEntryPoint);
+            memoryFootprintValueLabel.Text = Convert.ToString(peAnalysisResult.ImageSize);
             peDataGridView.DataSource = peAnalysisResult.SectionResults.ToList();
         }
     }

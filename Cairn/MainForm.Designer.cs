@@ -37,6 +37,10 @@
             entryPointLabel = new Label();
             entryPointValueLabel = new Label();
             architectureValueLabel = new Label();
+            machineLabel = new Label();
+            machineValueLabel = new Label();
+            memoryFootprintLabel = new Label();
+            memoryFootprintValueLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)peDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -77,9 +81,9 @@
             // 
             peDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             peDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            peDataGridView.Location = new Point(33, 105);
+            peDataGridView.Location = new Point(33, 140);
             peDataGridView.Name = "peDataGridView";
-            peDataGridView.Size = new Size(726, 333);
+            peDataGridView.Size = new Size(726, 298);
             peDataGridView.TabIndex = 4;
             // 
             // architectureLabel
@@ -94,7 +98,7 @@
             // entryPointLabel
             // 
             entryPointLabel.AutoSize = true;
-            entryPointLabel.Location = new Point(162, 73);
+            entryPointLabel.Location = new Point(39, 103);
             entryPointLabel.Name = "entryPointLabel";
             entryPointLabel.Size = new Size(113, 15);
             entryPointLabel.TabIndex = 6;
@@ -103,7 +107,7 @@
             // entryPointValueLabel
             // 
             entryPointValueLabel.AutoSize = true;
-            entryPointValueLabel.Location = new Point(272, 73);
+            entryPointValueLabel.Location = new Point(149, 103);
             entryPointValueLabel.Name = "entryPointValueLabel";
             entryPointValueLabel.Size = new Size(12, 15);
             entryPointValueLabel.TabIndex = 7;
@@ -118,12 +122,52 @@
             architectureValueLabel.TabIndex = 8;
             architectureValueLabel.Text = "-";
             // 
+            // machineLabel
+            // 
+            machineLabel.AutoSize = true;
+            machineLabel.Location = new Point(39, 88);
+            machineLabel.Name = "machineLabel";
+            machineLabel.Size = new Size(56, 15);
+            machineLabel.TabIndex = 9;
+            machineLabel.Text = "Machine:";
+            // 
+            // machineValueLabel
+            // 
+            machineValueLabel.AutoSize = true;
+            machineValueLabel.Location = new Point(93, 88);
+            machineValueLabel.Name = "machineValueLabel";
+            machineValueLabel.Size = new Size(12, 15);
+            machineValueLabel.TabIndex = 10;
+            machineValueLabel.Text = "-";
+            // 
+            // memoryFootprintLabel
+            // 
+            memoryFootprintLabel.AutoSize = true;
+            memoryFootprintLabel.Location = new Point(39, 118);
+            memoryFootprintLabel.Name = "memoryFootprintLabel";
+            memoryFootprintLabel.Size = new Size(110, 15);
+            memoryFootprintLabel.TabIndex = 11;
+            memoryFootprintLabel.Text = "Memory Footprint: ";
+            // 
+            // memoryFootprintValueLabel
+            // 
+            memoryFootprintValueLabel.AutoSize = true;
+            memoryFootprintValueLabel.Location = new Point(140, 118);
+            memoryFootprintValueLabel.Name = "memoryFootprintValueLabel";
+            memoryFootprintValueLabel.Size = new Size(12, 15);
+            memoryFootprintValueLabel.TabIndex = 12;
+            memoryFootprintValueLabel.Text = "-";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(800, 450);
+            Controls.Add(memoryFootprintValueLabel);
+            Controls.Add(memoryFootprintLabel);
+            Controls.Add(machineValueLabel);
+            Controls.Add(machineLabel);
             Controls.Add(architectureValueLabel);
             Controls.Add(entryPointValueLabel);
             Controls.Add(entryPointLabel);
@@ -152,5 +196,9 @@
         private Label entryPointLabel;
         private Label entryPointValueLabel;
         private Label architectureValueLabel;
+        private Label machineLabel;
+        private Label machineValueLabel;
+        private Label memoryFootprintLabel;
+        private Label memoryFootprintValueLabel;
     }
 }

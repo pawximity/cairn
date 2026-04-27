@@ -4,6 +4,8 @@
         string Name,
         int VirtualAddress,
         int VirtualSize,
-        int RawSize
+        int RawSize,
+        int RawPointer,
+        string Characteristics
     );
 }
