@@ -1,26 +1,39 @@
-﻿using System.Reflection.PortableExecutable;
+﻿using cairn.Models;
+using System.Collections.Immutable;
+using System.Reflection.PortableExecutable;
 
-public class PeAnalysisService
+namespace cairn.Services
 {
-	public PeAnalysisService()
-	{
+    public class PeAnalysisService
+    {
+        public PeAnalysisResult? Analyze(string filePath)
+        {
+            FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            PEReader peReader = new PEReader(fileStream);
+            PEHeaders peHeaders = peReader.PEHeaders;
+            // fields from pe header
+            if (peHeaders.PEHeader != null)
+            {
+                PEHeader peHeader = peHeaders.PEHeader;
+                bool is64Bit = peHeader.Magic == PEMagic.PE32Plus;
+                // fields from sections
+                List<PeSectionResult> sectionResults = FindSectionResults(peHeaders.SectionHeaders);
+                PeAnalysisResult analysisResult = new(filePath, is64Bit, peHeader.AddressOfEntryPoint, peHeader.ImageBase, peHeader.SizeOfImage, sectionResults);
+                return analysisResult;
+            }
 
-	}
+            return null;
+        }
 
-	public void Analyze(string filePath)
-	{
-		FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-		PEReader peReader = new PEReader(fileStream);
-		if (peReader.PEHeaders.PEHeader is PEHeader peHeader)
-		{
-            System.Diagnostics.Debug.WriteLine($"Image size, bytes:   {peHeader.SizeOfImage}");
-            System.Diagnostics.Debug.WriteLine($"Image base:          0x{peHeader.ImageBase:X}");
-            System.Diagnostics.Debug.WriteLine($"File alignment:      0x{peHeader.FileAlignment:X}");
-            System.Diagnostics.Debug.WriteLine($"Section alignment:   0x{peHeader.SectionAlignment:X}");
-            System.Diagnostics.Debug.WriteLine($"Subsystem:           {peHeader.Subsystem}");
-            System.Diagnostics.Debug.WriteLine($"Dll characteristics: {peHeader.DllCharacteristics}");
-            System.Diagnostics.Debug.WriteLine($"Linker version:      {peHeader.MajorLinkerVersion}.{peHeader.MinorLinkerVersion}");
-            System.Diagnostics.Debug.WriteLine($"OS version:          {peHeader.MajorOperatingSystemVersion}.{peHeader.MinorOperatingSystemVersion}");
+        private static List<PeSectionResult> FindSectionResults(ImmutableArray<SectionHeader> sectionHeaders)
+        {
+            List<PeSectionResult> sectionResults = new List<PeSectionResult>();
+            foreach (SectionHeader sectionHeader in sectionHeaders)
+            {
+                PeSectionResult sectionResult = new(sectionHeader.Name, sectionHeader.VirtualAddress, sectionHeader.VirtualAddress, sectionHeader.SizeOfRawData);
+                sectionResults.Add(sectionResult);
+            }
+            return sectionResults;
         }
     }
 }
