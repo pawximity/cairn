@@ -11,5 +11,4 @@
         public string VirtualAddressHex => $"0x{VirtualAddress:X8}";
         public string RawPointerHex => $"0x{RawPointer:X8}";
     }
-
 }
