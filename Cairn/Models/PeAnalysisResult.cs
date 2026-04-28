@@ -7,6 +7,8 @@
         string Machine,
         ulong ImageBase,
         int ImageSize,
-        IReadOnlyList<PeSectionResult> SectionResults
-    );
+        IReadOnlyList<PeSectionResult> SectionResults)
+    {
+        public string AddressOfEntryPointHex => $"0x{AddressOfEntryPoint:X8}";
+    }
 }

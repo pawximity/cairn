@@ -6,6 +6,10 @@
         int VirtualSize,
         int RawSize,
         int RawPointer,
-        string Characteristics
-    );
+        string Flags)
+    {
+        public string VirtualAddressHex => $"0x{VirtualAddress:X8}";
+        public string RawPointerHex => $"0x{RawPointer:X8}";
+    }
+
 }
