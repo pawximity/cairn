@@ -33,10 +33,10 @@
             filePathTextbox = new TextBox();
             menuStrip1 = new MenuStrip();
             peDataGridView = new DataGridView();
-            architectureLabel = new Label();
+            formatLabel = new Label();
             entryPointLabel = new Label();
             entryPointValueLabel = new Label();
-            architectureValueLabel = new Label();
+            formatValueLabel = new Label();
             machineLabel = new Label();
             machineValueLabel = new Label();
             memoryFootprintLabel = new Label();
@@ -86,14 +86,14 @@
             peDataGridView.Size = new Size(726, 298);
             peDataGridView.TabIndex = 4;
             // 
-            // architectureLabel
+            // formatLabel
             // 
-            architectureLabel.AutoSize = true;
-            architectureLabel.Location = new Point(39, 73);
-            architectureLabel.Name = "architectureLabel";
-            architectureLabel.Size = new Size(75, 15);
-            architectureLabel.TabIndex = 5;
-            architectureLabel.Text = "Architecture:";
+            formatLabel.AutoSize = true;
+            formatLabel.Location = new Point(39, 73);
+            formatLabel.Name = "formatLabel";
+            formatLabel.Size = new Size(48, 15);
+            formatLabel.TabIndex = 5;
+            formatLabel.Text = "Format:";
             // 
             // entryPointLabel
             // 
@@ -113,14 +113,14 @@
             entryPointValueLabel.TabIndex = 7;
             entryPointValueLabel.Text = "-";
             // 
-            // architectureValueLabel
+            // formatValueLabel
             // 
-            architectureValueLabel.AutoSize = true;
-            architectureValueLabel.Location = new Point(111, 73);
-            architectureValueLabel.Name = "architectureValueLabel";
-            architectureValueLabel.Size = new Size(12, 15);
-            architectureValueLabel.TabIndex = 8;
-            architectureValueLabel.Text = "-";
+            formatValueLabel.AutoSize = true;
+            formatValueLabel.Location = new Point(83, 73);
+            formatValueLabel.Name = "formatValueLabel";
+            formatValueLabel.Size = new Size(12, 15);
+            formatValueLabel.TabIndex = 8;
+            formatValueLabel.Text = "-";
             // 
             // machineLabel
             // 
@@ -168,10 +168,10 @@
             Controls.Add(memoryFootprintLabel);
             Controls.Add(machineValueLabel);
             Controls.Add(machineLabel);
-            Controls.Add(architectureValueLabel);
+            Controls.Add(formatValueLabel);
             Controls.Add(entryPointValueLabel);
             Controls.Add(entryPointLabel);
-            Controls.Add(architectureLabel);
+            Controls.Add(formatLabel);
             Controls.Add(peDataGridView);
             Controls.Add(filePathTextbox);
             Controls.Add(browseButton);
@@ -192,10 +192,10 @@
         private TextBox filePathTextbox;
         private MenuStrip menuStrip1;
         private DataGridView peDataGridView;
-        private Label architectureLabel;
+        private Label formatLabel;
         private Label entryPointLabel;
         private Label entryPointValueLabel;
-        private Label architectureValueLabel;
+        private Label formatValueLabel;
         private Label machineLabel;
         private Label machineValueLabel;
         private Label memoryFootprintLabel;

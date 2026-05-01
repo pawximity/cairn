@@ -21,6 +21,12 @@ namespace cairn.Services
             // fields from pe header
             PEHeader peHeader = peHeaders.PEHeader;
             bool is64Bit = peHeader.Magic == PEMagic.PE32Plus;
+            string format = peHeader.Magic switch
+            {
+                PEMagic.PE32 => "PE32 (32-bit)",
+                PEMagic.PE32Plus => "PE32+ (64-bit)",
+                _ => "Unknown"
+            };
             // fields from sections
             List<PeSectionResult> sectionResults = FindSectionResults(peHeaders.SectionHeaders);
             PeAnalysisResult analysisResult = new(
@@ -30,6 +36,7 @@ namespace cairn.Services
                 coffHeader.Machine.ToString(),
                 peHeader.ImageBase,
                 peHeader.SizeOfImage,
+                format,
                 sectionResults
                 );
             return analysisResult;

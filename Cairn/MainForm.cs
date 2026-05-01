@@ -44,7 +44,7 @@ namespace cairn
             {
                 return;
             }
-            architectureValueLabel.Text = peAnalysisResult.Is64Bit ? "64 Bit" : "32 Bit";
+            formatValueLabel.Text = peAnalysisResult.Format;
             machineValueLabel.Text = peAnalysisResult.Machine;
             entryPointValueLabel.Text = Convert.ToString(peAnalysisResult.AddressOfEntryPointHex);
             memoryFootprintValueLabel.Text = Convert.ToString(peAnalysisResult.ImageSize);
