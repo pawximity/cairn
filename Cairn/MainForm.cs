@@ -47,8 +47,22 @@ namespace cairn
             formatValueLabel.Text = peAnalysisResult.Format;
             machineValueLabel.Text = peAnalysisResult.Machine;
             entryPointValueLabel.Text = Convert.ToString(peAnalysisResult.AddressOfEntryPointHex);
-            memoryFootprintValueLabel.Text = Convert.ToString(peAnalysisResult.ImageSize);
+            memoryFootprintValueLabel.Text = FormatBytes(peAnalysisResult.ImageSize);
+            fileSizeValueLabel.Text = FormatBytes(peAnalysisResult.FileSize);
             peDataGridView.DataSource = peAnalysisResult.SectionResults.ToList();
+        }
+
+        private static string FormatBytes(long bytes)
+        {
+            if (bytes < 1024)
+            {
+                return $"{bytes} B";
+            }
+            if (bytes < 1024 * 1024)
+            {
+                return $"{bytes / 1024.0:F2} KB";
+            }
+            return $"{bytes / 1024.0 / 1024.0:F2} MB";
         }
     }
 }

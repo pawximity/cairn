@@ -2,6 +2,7 @@
 {
     public record PeAnalysisResult(
         string FilePath,
+        long FileSize,
         bool Is64Bit,
         int AddressOfEntryPoint,
         string Machine,

@@ -8,6 +8,7 @@ namespace cairn.Services
     {
         public PeAnalysisResult? Analyze(string filePath)
         {
+            FileInfo fileInfo = new FileInfo(filePath);
             FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             PEReader peReader = new PEReader(fileStream);
             PEHeaders peHeaders = peReader.PEHeaders;
@@ -31,6 +32,7 @@ namespace cairn.Services
             List<PeSectionResult> sectionResults = FindSectionResults(peHeaders.SectionHeaders);
             PeAnalysisResult analysisResult = new(
                 filePath,
+                fileInfo.Length,
                 is64Bit,
                 peHeader.AddressOfEntryPoint,
                 coffHeader.Machine.ToString(),

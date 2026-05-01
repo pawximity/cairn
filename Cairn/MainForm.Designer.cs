@@ -41,6 +41,8 @@
             machineValueLabel = new Label();
             memoryFootprintLabel = new Label();
             memoryFootprintValueLabel = new Label();
+            fileSizeLabel = new Label();
+            fileSizeValueLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)peDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -81,9 +83,9 @@
             // 
             peDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             peDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            peDataGridView.Location = new Point(33, 140);
+            peDataGridView.Location = new Point(33, 155);
             peDataGridView.Name = "peDataGridView";
-            peDataGridView.Size = new Size(726, 298);
+            peDataGridView.Size = new Size(726, 283);
             peDataGridView.TabIndex = 4;
             // 
             // formatLabel
@@ -152,11 +154,29 @@
             // memoryFootprintValueLabel
             // 
             memoryFootprintValueLabel.AutoSize = true;
-            memoryFootprintValueLabel.Location = new Point(140, 118);
+            memoryFootprintValueLabel.Location = new Point(149, 118);
             memoryFootprintValueLabel.Name = "memoryFootprintValueLabel";
             memoryFootprintValueLabel.Size = new Size(12, 15);
             memoryFootprintValueLabel.TabIndex = 12;
             memoryFootprintValueLabel.Text = "-";
+            // 
+            // fileSizeLabel
+            // 
+            fileSizeLabel.AutoSize = true;
+            fileSizeLabel.Location = new Point(39, 133);
+            fileSizeLabel.Name = "fileSizeLabel";
+            fileSizeLabel.Size = new Size(51, 15);
+            fileSizeLabel.TabIndex = 13;
+            fileSizeLabel.Text = "File Size:";
+            // 
+            // fileSizeValueLabel
+            // 
+            fileSizeValueLabel.AutoSize = true;
+            fileSizeValueLabel.Location = new Point(93, 133);
+            fileSizeValueLabel.Name = "fileSizeValueLabel";
+            fileSizeValueLabel.Size = new Size(12, 15);
+            fileSizeValueLabel.TabIndex = 14;
+            fileSizeValueLabel.Text = "-";
             // 
             // MainForm
             // 
@@ -164,6 +184,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(800, 450);
+            Controls.Add(fileSizeValueLabel);
+            Controls.Add(fileSizeLabel);
             Controls.Add(memoryFootprintValueLabel);
             Controls.Add(memoryFootprintLabel);
             Controls.Add(machineValueLabel);
@@ -200,5 +222,7 @@
         private Label machineValueLabel;
         private Label memoryFootprintLabel;
         private Label memoryFootprintValueLabel;
+        private Label fileSizeLabel;
+        private Label fileSizeValueLabel;
     }
 }
