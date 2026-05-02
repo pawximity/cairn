@@ -49,7 +49,8 @@ namespace cairn
             entryPointValueLabel.Text = Convert.ToString(peAnalysisResult.AddressOfEntryPointHex);
             memoryFootprintValueLabel.Text = FormatBytes(peAnalysisResult.ImageSize);
             fileSizeValueLabel.Text = FormatBytes(peAnalysisResult.FileSize);
-            peDataGridView.DataSource = peAnalysisResult.SectionResults.ToList();
+            dataGridView.DataSource = peAnalysisResult.SectionResults.ToList();
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private static string FormatBytes(long bytes)

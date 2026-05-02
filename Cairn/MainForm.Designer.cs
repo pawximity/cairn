@@ -32,7 +32,7 @@
             browseButton = new Button();
             filePathTextbox = new TextBox();
             menuStrip1 = new MenuStrip();
-            peDataGridView = new DataGridView();
+            dataGridView = new DataGridView();
             formatLabel = new Label();
             entryPointLabel = new Label();
             entryPointValueLabel = new Label();
@@ -43,7 +43,7 @@
             memoryFootprintValueLabel = new Label();
             fileSizeLabel = new Label();
             fileSizeValueLabel = new Label();
-            ((System.ComponentModel.ISupportInitialize)peDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -79,14 +79,14 @@
             menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
-            // peDataGridView
+            // dataGridView
             // 
-            peDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            peDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            peDataGridView.Location = new Point(33, 155);
-            peDataGridView.Name = "peDataGridView";
-            peDataGridView.Size = new Size(726, 283);
-            peDataGridView.TabIndex = 4;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Location = new Point(33, 155);
+            dataGridView.Name = "dataGridView";
+            dataGridView.Size = new Size(726, 283);
+            dataGridView.TabIndex = 4;
             // 
             // formatLabel
             // 
@@ -194,7 +194,7 @@
             Controls.Add(entryPointValueLabel);
             Controls.Add(entryPointLabel);
             Controls.Add(formatLabel);
-            Controls.Add(peDataGridView);
+            Controls.Add(dataGridView);
             Controls.Add(filePathTextbox);
             Controls.Add(browseButton);
             Controls.Add(label1);
@@ -202,7 +202,7 @@
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
             Text = "cairn";
-            ((System.ComponentModel.ISupportInitialize)peDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -213,7 +213,7 @@
         private Button browseButton;
         private TextBox filePathTextbox;
         private MenuStrip menuStrip1;
-        private DataGridView peDataGridView;
+        private DataGridView dataGridView;
         private Label formatLabel;
         private Label entryPointLabel;
         private Label entryPointValueLabel;
