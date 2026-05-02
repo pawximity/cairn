@@ -49,8 +49,25 @@ namespace cairn
             entryPointValueLabel.Text = Convert.ToString(peAnalysisResult.AddressOfEntryPointHex);
             memoryFootprintValueLabel.Text = FormatBytes(peAnalysisResult.ImageSize);
             fileSizeValueLabel.Text = FormatBytes(peAnalysisResult.FileSize);
-            dataGridView.DataSource = peAnalysisResult.SectionResults.ToList();
+
+            // data grid
+            IReadOnlyList<PeSectionResult> sections = peAnalysisResult.SectionResults.ToList();
+            dataGridView.DataSource = sections;
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            int addressOfEntryPoint = peAnalysisResult.AddressOfEntryPoint;
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                PeSectionResult? section = row.DataBoundItem as PeSectionResult;
+                if (section != null)
+                {
+                    // highlight entry section
+                    if (IsEntrySection(section, addressOfEntryPoint))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    }
+                }
+            }
         }
 
         private static string FormatBytes(long bytes)
@@ -64,6 +81,13 @@ namespace cairn
                 return $"{bytes / 1024.0:F2} KB";
             }
             return $"{bytes / 1024.0 / 1024.0:F2} MB";
+        }
+
+        private static bool IsEntrySection(PeSectionResult section, int addressOfEntryPoint)
+        {
+            int startingAddress = section.VirtualAddress;
+            int endingAddress = startingAddress + Math.Max(section.VirtualSize, section.RawSize);
+            return addressOfEntryPoint >= startingAddress && addressOfEntryPoint < endingAddress;
         }
     }
 }
